@@ -1,8 +1,8 @@
 {
-  "name": "cooking-recipe-stack",
+  "name": "cooking-stack",
   "title": "Cooking Recipes",
   "description": "A stack to easily create a markdown blog for sharing cooking recipes.",
-  "uri": "git+https://github.com/xyzshantaram/cooking-recipe-stack.git",
+  "uri": "git+https://github.com/xyzshantaram/cooking-stack.git",
   "license": "MIT",
   "commands": ["npm", "git"],
   "tech": ["html", "css", "water.css", "javascript", "markdown", "nodejs"]

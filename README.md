@@ -21,8 +21,8 @@ maintain, perfect for home cooks who want to share their recipes online.
 
 1. Clone this repository:
    ```
-   git clone https://github.com/xyzshantaram/cooking-recipe-stack.git
-   cd cooking-recipe-stack
+   git clone https://github.com/xyzshantaram/cooking-stack.git
+   cd cooking-stack
    ```
 
 2. Install dependencies:
