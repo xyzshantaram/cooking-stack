@@ -5,15 +5,12 @@
         {{#each recipes}}
         <article class="recipe-card">
             <h2><a href="/recipe/{{slug}}">{{title}}</a></h2>
-            <p class="date">{{date}}</p>
+            <p class="date">{{formatDate date}}</p>
             
             <div class="tags">
-                {{#each categories}}
-                <a href="/category/{{this}}" class="tag category">{{this}}</a>
-                {{/each}}
-                
                 {{#each tags}}
-                <a href="/tag/{{this}}" class="tag">{{this}}</a>
+                 <!-- href="/tag/{{this}}" --> 
+                <a href="#"class="tag">{{this}}</a>
                 {{/each}}
             </div>
             

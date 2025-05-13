@@ -12,13 +12,27 @@ const PORT = process.env.PORT || 3000;
 app.engine('html', engine({
   extname: '.html',
   defaultLayout: 'layout',
-  layoutsDir: path.join(__dirname, 'templates')
+  layoutsDir: path.join(__dirname, 'templates'),
+  helpers: {
+    formatDate: function (date) {
+      const d = new Date(date);
+      return d.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    }
+  }
 }));
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'templates'));
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/test', (req, res) => {
+  res.render('test', { name: 'Shan', layout: false });
+});
 
 // Home page route
 app.get('/', async (req, res) => {
@@ -32,14 +46,18 @@ app.get('/', async (req, res) => {
       if (path.extname(file) === '.md') {
         const content = await fs.readFile(path.join(__dirname, 'recipes', file), 'utf8');
         const { attributes, body } = frontMatter(content);
-        
+        // Find the Description section
+        let description = '';
+        const descMatch = body.match(/## Description\n([\s\S]*?)(\n## |$)/);
+        if (descMatch) {
+          description = descMatch[1].trim().replace(/\n+/g, ' ');
+        }
         recipes.push({
           slug: path.basename(file, '.md'),
           title: attributes.title,
           date: attributes.date,
-          categories: attributes.categories,
           tags: attributes.tags,
-          description: body.split('##')[1].split('\n').filter(line => line.trim()).join(' ')
+          description: description || 'No description.'
         });
       }
     }
@@ -47,7 +65,9 @@ app.get('/', async (req, res) => {
     // Sort recipes by date (newest first)
     recipes.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    res.render('home', { 
+    console.log('Parsed recipes:', recipes);
+
+    res.render('home', {
       recipes,
       title: 'Home'
     });
@@ -62,26 +82,16 @@ app.get('/recipe/:slug', async (req, res) => {
   try {
     const { slug } = req.params;
     const filePath = path.join(__dirname, 'recipes', `${slug}.md`);
-    
     const content = await fs.readFile(filePath, 'utf8');
+
     const { attributes, body } = frontMatter(content);
-    
-    // Parse the markdown content
-    const sections = body.split('##').filter(section => section.trim());
-    const parsedSections = {};
-    
-    sections.forEach(section => {
-      const lines = section.split('\n').filter(line => line.trim());
-      const title = lines[0].trim();
-      const content = marked(lines.slice(1).join('\n'));
-      
-      parsedSections[title.toLowerCase()] = content;
-    });
-    
+    const htmlBody = marked(body); // parse full Markdown body to HTML
+
     res.render('recipe', {
       recipe: {
         ...attributes,
-        ...parsedSections
+        body: htmlBody,
+        slug
       },
       title: attributes.title
     });
