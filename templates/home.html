@@ -1,0 +1,28 @@
+<div class="recipe-list">
+    <h1>Latest Recipes</h1>
+    
+    {{#if recipes.length}}
+        {{#each recipes}}
+        <article class="recipe-card">
+            <h2><a href="/recipe/{{slug}}">{{title}}</a></h2>
+            <p class="date">{{date}}</p>
+            
+            <div class="tags">
+                {{#each categories}}
+                <a href="/category/{{this}}" class="tag category">{{this}}</a>
+                {{/each}}
+                
+                {{#each tags}}
+                <a href="/tag/{{this}}" class="tag">{{this}}</a>
+                {{/each}}
+            </div>
+            
+            <p>{{description}}</p>
+            
+            <a href="/recipe/{{slug}}" class="read-more">View Recipe</a>
+        </article>
+        {{/each}}
+    {{else}}
+        <p>No recipes found. Add your first recipe to get started!</p>
+    {{/if}}
+</div>

@@ -5,5 +5,5 @@
   "uri": "git+https://github.com/xyzshantaram/cooking-recipe-stack.git",
   "license": "MIT",
   "commands": ["npm", "git"],
-  "tech": ["html", "css", "javascript", "markdown", "nodejs"]
+  "tech": ["html", "css", "water.css", "javascript", "markdown", "nodejs"]
 }

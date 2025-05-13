@@ -1,0 +1,57 @@
+<div class="recipe">
+    <div class="recipe-header">
+        <h1>{{recipe.title}}</h1>
+        <p class="date">Published on {{recipe.date}}</p>
+        
+        <div class="tags">
+            {{#each recipe.categories}}
+            <a href="/category/{{this}}" class="tag category">{{this}}</a>
+            {{/each}}
+            
+            {{#each recipe.tags}}
+            <a href="/tag/{{this}}" class="tag">{{this}}</a>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="recipe-meta">
+        <div class="prep-time">
+            <strong>Prep Time:</strong> {{recipe.prepTime}}
+        </div>
+        <div class="cook-time">
+            <strong>Cook Time:</strong> {{recipe.cookTime}}
+        </div>
+        <div class="servings">
+            <strong>Servings:</strong> {{recipe.servings}}
+        </div>
+    </div>
+
+    <div class="description">
+        {{recipe.description}}
+    </div>
+
+    <div class="ingredients">
+        <h2>Ingredients</h2>
+        <ul>
+            {{#each recipe.ingredients}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class="instructions">
+        <h2>Instructions</h2>
+        <ol>
+            {{#each recipe.instructions}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ol>
+    </div>
+
+    {{#if recipe.notes}}
+    <div class="notes">
+        <h2>Notes</h2>
+        <p>{{recipe.notes}}</p>
+    </div>
+    {{/if}}
+</div>

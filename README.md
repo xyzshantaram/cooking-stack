@@ -10,7 +10,8 @@ This stack provides everything you need to create a beautiful, functional recipe
 
 - Write recipes in simple markdown format
 - Organize recipes by categories and tags
-- Responsive design that works on mobile and desktop
+- Beautiful, responsive design using Water.css (a classless CSS framework)
+- Clean, elegant styling without writing any CSS classes
 - Search functionality to find recipes quickly
 - Easy to customize and extend
 

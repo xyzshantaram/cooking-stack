@@ -72,6 +72,7 @@ As the AI assistant, you should help users with:
 
 This stack uses:
 - HTML/CSS for the frontend
+- Water.css (a classless CSS framework) for beautiful styling without classes
 - JavaScript for interactivity
 - Markdown for content
 - Node.js for the backend

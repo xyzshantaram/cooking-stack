@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} | Cooking Recipes</title>
+    <!-- Water.css - A classless CSS framework for clean, elegant styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <!-- Custom styles to enhance Water.css for recipe-specific elements -->
+    <style>
+        .recipe-header {
+            margin-bottom: 2rem;
+        }
+        .recipe-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .recipe-meta div {
+            padding: 0.5rem;
+            border-radius: 4px;
+            background-color: rgba(0,0,0,0.03);
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .tag {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background-color: rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+        .ingredients ul {
+            list-style-type: circle;
+        }
+        .instructions ol {
+            padding-left: 1.5rem;
+        }
+        .instructions li {
+            margin-bottom: 1rem;
+        }
+        .notes {
+            padding: 1rem;
+            border-radius: 4px;
+            background-color: rgba(0,0,0,0.03);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="/">Cooking Recipes</a></h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/categories">Categories</a>
+            <a href="/tags">Tags</a>
+            <a href="/about">About</a>
+        </nav>
+    </header>
+
+    <main>
+        {{content}}
+    </main>
+
+    <footer>
+        <p>&copy; {{currentYear}} Cooking Recipes. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Simple JavaScript to enhance the user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.querySelector('footer p').innerHTML = 
+                document.querySelector('footer p').innerHTML.replace('{{currentYear}}', new Date().getFullYear());
+        });
+    </script>
+</body>
+</html>
