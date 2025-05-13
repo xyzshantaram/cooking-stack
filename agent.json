@@ -1,0 +1,17 @@
+{
+  "name": "ChefDork",
+  "model": "gpt-4.1",
+  "profession": "Recipe Blog Developer",
+  "face": "👨‍🍳",
+  "animation": [
+    "👨‍🍳",
+    "🍳"
+  ],
+  "mcpServers": {
+    "developer": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "deno", "run", "-A", "jsr:@soapbox/developer-mcp"]
+    }
+  }
+}
