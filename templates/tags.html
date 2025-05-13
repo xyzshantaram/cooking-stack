@@ -1,0 +1,10 @@
+<div class="tags-list">
+  <h1>All Tags</h1>
+  <ul>
+    {{#each tags}}
+      <li>
+        <a href="/tags/{{@key}}">{{@key}}</a> ({{this}})
+      </li>
+    {{/each}}
+  </ul>
+</div>

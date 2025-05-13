@@ -1,0 +1,15 @@
+<div class="tag-recipes">
+  <h1>Recipes tagged with "{{tag}}"</h1>
+  {{#if recipes.length}}
+    <ul>
+      {{#each recipes}}
+        <li>
+          <a href="/recipe/{{slug}}">{{title}}</a> ({{formatDate date}})
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No recipes found for this tag.</p>
+  {{/if}}
+  <p><a href="/tags">Back to all tags</a></p>
+</div>
